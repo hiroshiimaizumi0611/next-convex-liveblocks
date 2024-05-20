@@ -50,7 +50,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Top + Side.Left, bounds);
             }}
           />
           <rect
@@ -65,7 +65,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Top, bounds);
             }}
           />
           <rect
@@ -80,7 +80,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Top + Side.Right, bounds);
             }}
           />
           <rect
@@ -95,7 +95,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Right, bounds);
             }}
           />
           <rect
@@ -110,22 +110,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
-            }}
-          />
-          <rect
-            className="fill-white stroke-1 stroke-blue-500"
-            x={0}
-            y={0}
-            style={{
-              cursor: "nwse-resize",
-              width: `${HANDLE_WIDTH}px`,
-              height: `${HANDLE_WIDTH}px`,
-              transform: `translate(${bounds.x - HANDLE_WIDTH / 2 + bounds.width}px, ${bounds.y - HANDLE_WIDTH / 2 + bounds.height}px)`,
-            }}
-            onPointerDown={(e) => {
-              e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Bottom + Side.Right, bounds);
             }}
           />
           <rect
@@ -140,7 +125,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Bottom, bounds);
             }}
           />
           <rect
@@ -155,7 +140,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Bottom + Side.Left, bounds);
             }}
           />
           <rect
@@ -170,7 +155,7 @@ export const SelectionBox = memo(({ onResizeHandlePointerDown }: SelectionBoxPro
             }}
             onPointerDown={(e) => {
               e.stopPropagation();
-              // TODO
+              onResizeHandlePointerDown(Side.Left, bounds);
             }}
           />
         </>
