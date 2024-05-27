@@ -20,6 +20,7 @@ import {
   useHistory,
   useMutation,
   useOthersMapped,
+  useSelf,
   useStorage,
 } from "@/liveblocks.config";
 import { CursorsPresence } from "./cursors-presence";
@@ -44,6 +45,8 @@ interface CanvasProps {
 
 export const Canvas = ({ boardId }: CanvasProps) => {
   const layerIds = useStorage((root) => root.layerIds);
+  const pencilDraft = useSelf((me) => me.presence.pencilDraft);
+  
   const [canvasState, setCanvasState] = useState<CanvasState>({ mode: CanvasMode.None });
   const [camera, setCamera] = useState<Camera>({ x: 0, y: 0 });
   const [lastUsedColor, setLastUsedColor] = useState<Color>({ r: 255, g: 255, b: 255 });
@@ -380,6 +383,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
             />
           )}
           <CursorsPresence />
+          {pencilDraft}
         </g>
       </svg>
     </main>
