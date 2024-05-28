@@ -5,7 +5,7 @@ import { useMutation, useSelf } from "@/liveblocks.config";
 import { Camera, Color } from "@/types/canvas";
 import { memo } from "react";
 import { ColorPicker } from "./color-picker";
-import { useDleteLayers } from "@/hooks/use-delete-layers";
+import { useDeleteLayers } from "@/hooks/use-delete-layers";
 import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
 import { BringToFront, SendToBack, Trash2 } from "lucide-react";
@@ -16,7 +16,7 @@ interface SelectionToolsProps {
 }
 
 export const SelectionTools = memo(({ camera, setLastUsedColor }: SelectionToolsProps) => {
-  const deleteLayers = useDleteLayers();
+  const deleteLayers = useDeleteLayers();
   const selection = useSelf((me) => me.presence.selection);
 
   const moveToBack = useMutation(
@@ -24,7 +24,7 @@ export const SelectionTools = memo(({ camera, setLastUsedColor }: SelectionTools
       const liveLayerIds = storage.get("layerIds");
       const indices: number[] = [];
 
-      const arr = liveLayerIds.toArray();
+      const arr = liveLayerIds.toImmutable();
 
       for (let i = 0; i < arr.length; i++) {
         if (selection.includes(arr[i])) {
@@ -44,7 +44,7 @@ export const SelectionTools = memo(({ camera, setLastUsedColor }: SelectionTools
       const liveLayerIds = storage.get("layerIds");
       const indices: number[] = [];
 
-      const arr = liveLayerIds.toArray();
+      const arr = liveLayerIds.toImmutable();
 
       for (let i = 0; i < arr.length; i++) {
         if (selection.includes(arr[i])) {
